@@ -13,15 +13,18 @@
 ## ⚙️ 실행 방법
 
 #### 1. 저장소를 클론합니다.
+
     ```
     git clone <your-repo-url>
     cd reward-event
     ```
+    
 #### 2. 각 서비스 폴더에 `.env` 파일을 생성합니다.
 
 __환경 변수 설정__
 
 __*apps/event/.env*__
+
   ```
   SALT_ROUND=10
   PAGE_NUM=10
@@ -30,12 +33,14 @@ __*apps/event/.env*__
   ```
 
 __*apps/gateway/.env*__
+
   ```
   HTTP_PORT=3000
   JWT_SECRET='secret'
   ```
 
 __*apps/user/.env*__
+
   ```
   JWT_SECRET='secret'
   PAGE_NUM=10
@@ -45,16 +50,18 @@ __*apps/user/.env*__
   ```
 
 #### 3. Docker Compose로 실행합니다.
-    ```
-    docker compose up --build
-    ```
+
+```
+docker compose up --build
+```
+    
 #### 4. 회원가입
 
 - 첫 아이디는 admin으로 지정하고, 이후에는 role을 제외하고 회원가입 할 수 있습니다.
-    - /auth/sign-up
-    - /aut/login
+    - POST /auth/sign-up
+    - POST /aut/login
 - admin은 다른 아이디의 role을 변경할 수 있습니다.
-    - /auth/users/:userId/role 
+    - PATCH /auth/users/:userId/role 
 
 ```
 sign-up
@@ -74,10 +81,12 @@ login
 
 #### 5. 이벤트 추가
 
-- 초기 상태는 inactive 상태이기 때문에 상태를 변경해야 합니다. 
-    - /events/:eventId/status
+- 초기 상태는 inactive 상태이기 때문에 상태를 변경해야 합니다.
+    - POST /events
+    - PATCH /events/:eventId/status
 
 ```
+create event
 {
   "title": "이벤트 테스트",
   "startDate": "2025-05-18T00:00:00.000Z",
