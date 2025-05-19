@@ -26,14 +26,14 @@ export class EventController {
 
   @Get('/:eventId')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.USER, Role.ADMIN, Role.OPERATOR, Role.AUDITOR)
+  @Roles(Role.USER, Role.ADMIN, Role.OPERATOR)
   readEvent(@Param() params: EventIdDto) {
     return this.eventService.readEvent(params.eventId);
   }
 
   @Get()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.USER, Role.ADMIN, Role.OPERATOR, Role.AUDITOR)
+  @Roles(Role.USER, Role.ADMIN, Role.OPERATOR)
   readAllEvent() {
     return this.eventService.readAllEvent();
   }
@@ -47,7 +47,7 @@ export class EventController {
 
   @Get('/:eventId/rewards')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.USER, Role.ADMIN, Role.OPERATOR, Role.AUDITOR)
+  @Roles(Role.USER, Role.ADMIN, Role.OPERATOR)
   readRewardEvent(@Param() params: EventIdDto) {
     return this.eventService.readRewardEvent(params.eventId);
   }
@@ -75,7 +75,7 @@ export class EventController {
 
   @Post('/:eventId/claim')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.USER)
+  @Roles(Role.USER, Role.ADMIN)
   rewardEvent(@User() user: UserType, @Param() params: EventIdDto) {
     return this.eventService.rewardEvent(user, params.eventId);
   }
