@@ -51,16 +51,24 @@ __*apps/user/.env*__
 #### 4. 회원가입
 
 - 첫 아이디는 admin으로 지정하고, 이후에는 role을 제외하고 회원가입 할 수 있습니다.
+    - /auth/sign-up
+    - /aut/login
 - admin은 다른 아이디의 role을 변경할 수 있습니다.
     - /auth/users/:userId/role 
-- 자동으로 로그인되어 access_token이 발급되고, 헤더에 추가합니다.
 
 ```
+sign-up
 {
     "userId": "testid",
     "name": "메이플스토리",
     "password": "password",
     "role": "admin"
+}
+
+login
+{
+    "userId":"testid",
+    "password":"password"
 }
 ```
 
@@ -71,7 +79,7 @@ __*apps/user/.env*__
 
 ```
 {
-  "title": "이벤트 테스트@@@@@@",
+  "title": "이벤트 테스트",
   "startDate": "2025-05-18T00:00:00.000Z",
   "endDate": "2025-06-20T23:59:59.000Z",
   "conditions": {
