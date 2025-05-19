@@ -48,6 +48,47 @@ __*apps/user/.env*__
     ```
     docker compose up --build
     ```
+#### 4. 회원가입
+
+- 첫 아이디는 admin으로 지정하고, 이후에는 role을 제외하고 회원가입 할 수 있습니다.
+- admin은 다른 아이디의 role을 변경할 수 있습니다.
+    - /auth/users/:userId/role 
+- 자동으로 로그인되어 access_token이 발급되고, 헤더에 추가합니다.
+
+```
+{
+    "userId": "testid",
+    "name": "메이플스토리",
+    "password": "password",
+    "role": "admin"
+}
+```
+
+#### 5. 이벤트 추가
+
+- 초기 상태는 inactive 상태이기 때문에 상태를 변경해야 합니다. 
+    - /events/:eventId/status
+
+```
+{
+  "title": "이벤트 테스트@@@@@@",
+  "startDate": "2025-05-18T00:00:00.000Z",
+  "endDate": "2025-06-20T23:59:59.000Z",
+  "conditions": {
+    "daysSinceSignUp": 3
+  },
+  "rewards" : [{
+    "type" : "coupon",
+    "value" : 5000
+  }]
+}
+
+inactive -> active 변경
+
+{
+    "status":"active"
+}
+```
 
 
 ## 📝 api document
