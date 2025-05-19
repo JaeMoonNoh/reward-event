@@ -11,6 +11,8 @@ import { EventHelperService } from './event.helper.service';
 import { EventValidationService } from './event.validation.service';
 import { EVENT_CONDITION } from 'apps/common/constant/event-condition.constant';
 import { ERROR_MESSAGES } from 'apps/common/constant/error-message.constant';
+import { UserDocument } from 'apps/user/src/auth/entity/user.entity';
+import { UserType } from 'apps/common/interface/jwt-payload.interface';
 
 type EventDoc = HydratedDocument<Event>;
 type RewardDoc = HydratedDocument<Reward>;
@@ -56,7 +58,7 @@ export class EventService {
     return updated;
   }
   
-  async rewardEvent(user: any, eventId: string) {
+  async rewardEvent(user: UserType, eventId: string) {
     const objectId = this.eventHelperService.toObjectId(eventId);
     const event = await this.getValideEventOrThrow(objectId);
     await this.eventValidationService.ensureEventIsActive(event);

@@ -1,3 +1,11 @@
+import { UserType } from "apps/common/interface/jwt-payload.interface";
+import { UserDocument } from "apps/user/src/auth/entity/user.entity";
+
+export interface ConditionType {
+    isEligible: boolean;
+    reason: string;
+}
+
 export interface ConditionStrategy {
-    validate(user: any, value: any): Promise<{ isEligible: boolean; reason: string }>
+    validate(user: UserType, value: any): Promise<ConditionType>
 }

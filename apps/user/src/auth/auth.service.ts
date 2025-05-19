@@ -59,6 +59,7 @@ export class AuthService {
     private async login(user: UserWithoutPassword): Promise<AuthTokens> {
         const updatedDates = await this.updateLoginDates(user.userId);
         const payload = this.jwtTokenService.createPayload(user, updatedDates);
+        console.log(payload);
 
         const accessToken = this.jwtTokenService.sign(payload);
         const refreshToken = this.jwtTokenService.signRefreshToken(payload);

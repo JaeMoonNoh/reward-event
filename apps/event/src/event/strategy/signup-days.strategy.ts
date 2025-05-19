@@ -1,7 +1,9 @@
-import { ConditionStrategy } from "./condition-strategy.interface";
+import { ConditionStrategy, ConditionType } from "./condition-strategy.interface";
 import { Injectable } from "@nestjs/common";
 import { EVENT_CONDITION } from "apps/common/constant/event-condition.constant";
 import { TimeService } from "../time.service";
+import { UserDocument } from "apps/user/src/auth/entity/user.entity";
+import { UserType } from "apps/common/interface/jwt-payload.interface";
 
 @Injectable()
 export class SignupDaysStrategy implements ConditionStrategy {
@@ -9,8 +11,8 @@ export class SignupDaysStrategy implements ConditionStrategy {
         private readonly timeService: TimeService,
     ){}
 
-    async validate(user: any, maxDays: number): Promise<{ isEligible: boolean; reason: string; }> {
-        const firstLoginAt = this.timeService.formatted(user.firstLoginAt);
+    async validate(user: UserType, maxDays: number): Promise<ConditionType> {
+        const firstLoginAt = this.timeService.formatted(user.firstLoginAt!);
         const now = this.timeService.now();
         const diffInDays = this.timeService.diffInDays(firstLoginAt, now);
         const isEligible = diffInDays <= maxDays;
