@@ -5,14 +5,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Event, EventSchema } from './entity/event.entity';
 import { Reward, RewardSchema } from './entity/reward.entity';
 import { Claim, ClaimSchema } from './entity/claim.entity';
-import { ClaimService } from './claim.service';
-import { EventHelperService } from './event.helper.service';
-import { EventValidationService } from './event.validation.service';
-import { RewardService } from './reward.service';
+import { ClaimService } from './service/claim.service';
+import { EventHelperService } from './service/event.helper.service';
+import { EventValidationService } from './service/event.validation.service';
+import { RewardService } from './service/reward.service';
 import { StrategyFactory } from './strategy/strategy-factory';
 import { SignupDaysStrategy } from './strategy/signup-days.strategy';
 import { AuthModule } from 'apps/user/src/auth/auth.module';
-import { TimeService } from './time.service';
+import { TimeService } from './service/time.service';
 
 @Module({
   imports: [

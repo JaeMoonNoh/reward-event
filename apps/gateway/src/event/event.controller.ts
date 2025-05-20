@@ -20,7 +20,6 @@ export class EventController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN, Role.OPERATOR, Role.AUDITOR)
   readAllReward(@Query() query: PaginationQueryDto) {
-    console.log(query);
     return this.eventService.readAllReward(query.afterId);
   }
 

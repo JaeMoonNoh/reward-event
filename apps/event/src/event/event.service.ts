@@ -5,13 +5,12 @@ import { Event, EventDocument } from './entity/event.entity';
 import { Reward } from './entity/reward.entity';
 import { CreateEventDto } from 'apps/common/dto/event/create-event.dto';
 import { UpdateStatusDto } from 'apps/common/dto/event/update-status.dto';
-import { ClaimService } from './claim.service';
-import { RewardService } from './reward.service';
-import { EventHelperService } from './event.helper.service';
-import { EventValidationService } from './event.validation.service';
+import { ClaimService } from './service/claim.service';
+import { RewardService } from './service/reward.service';
+import { EventHelperService } from './service/event.helper.service';
+import { EventValidationService } from './service/event.validation.service';
 import { EVENT_CONDITION } from 'apps/common/constant/event-condition.constant';
 import { ERROR_MESSAGES } from 'apps/common/constant/error-message.constant';
-import { UserDocument } from 'apps/user/src/auth/entity/user.entity';
 import { UserType } from 'apps/common/interface/jwt-payload.interface';
 
 type EventDoc = HydratedDocument<Event>;

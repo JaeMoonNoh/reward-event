@@ -3,8 +3,8 @@ import { EventService } from './event.service';
 import { MessagePattern } from '@nestjs/microservices';
 import { EVENT_COMMANDS } from 'apps/common/constant/event-cmd.constant';
 import { AddRewardPayload, CreateEventPayload, EventIdPayload, ReadAllRewardPayload, ReadRewardPayload, RewardEventPayload, UpdateStatusPayload } from 'apps/common/interface/event.interface';
-import { ClaimService } from './claim.service';
-import { RewardService } from './reward.service';
+import { ClaimService } from './service/claim.service';
+import { RewardService } from './service/reward.service';
 
 @Controller()
 export class EventController {
@@ -41,7 +41,6 @@ export class EventController {
 
   @MessagePattern({ cmd: EVENT_COMMANDS.READ_ALL_REWARD })
   async readAllReward({ afterId } : ReadAllRewardPayload) {
-    console.log("after id : ", afterId);
     return this.claimService.readAllReward(afterId);
   }
 

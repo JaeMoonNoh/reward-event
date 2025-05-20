@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
-import { StrategyFactory } from "./strategy/strategy-factory";
-import { EventDocument } from "./entity/event.entity";
+import { StrategyFactory } from "../strategy/strategy-factory";
+import { EventDocument } from "../entity/event.entity";
 import { ERROR_MESSAGES } from "apps/common/constant/error-message.constant";
 import { EVENT_STATUS } from "apps/common/constant/event-condition.constant";
 import { UserDocument } from "apps/user/src/auth/entity/user.entity";

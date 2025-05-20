@@ -1,5 +1,5 @@
 import { InjectModel } from "@nestjs/mongoose";
-import { Reward, RewardDocument } from "./entity/reward.entity";
+import { Reward, RewardDocument } from "../entity/reward.entity";
 import { Model, Types } from "mongoose";
 import { RewardDto } from "apps/common/dto/event/reward.dto";
 import { NotFoundException } from "@nestjs/common";

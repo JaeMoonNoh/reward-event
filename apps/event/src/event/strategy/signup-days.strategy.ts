@@ -1,8 +1,7 @@
 import { ConditionStrategy, ConditionType } from "./condition-strategy.interface";
 import { Injectable } from "@nestjs/common";
 import { EVENT_CONDITION } from "apps/common/constant/event-condition.constant";
-import { TimeService } from "../time.service";
-import { UserDocument } from "apps/user/src/auth/entity/user.entity";
+import { TimeService } from "../service/time.service";
 import { UserType } from "apps/common/interface/jwt-payload.interface";
 
 @Injectable()

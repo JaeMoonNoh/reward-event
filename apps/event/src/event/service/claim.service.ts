@@ -1,9 +1,9 @@
 import { InjectModel } from "@nestjs/mongoose";
-import { Claim, ClaimDocument } from "./entity/claim.entity";
+import { Claim, ClaimDocument } from "../entity/claim.entity";
 import { HydratedDocument, Model, Types } from "mongoose";
 import { ConflictException } from "@nestjs/common";
 import { EventHelperService } from "./event.helper.service";
-import { Reward } from "./entity/reward.entity";
+import { Reward } from "../entity/reward.entity";
 import { ERROR_MESSAGES } from "apps/common/constant/error-message.constant";
 import { CLAIM_REASON, CLAIM_STATUS } from "apps/common/constant/claim.constant";
 import { ConfigService } from "@nestjs/config";
@@ -34,13 +34,9 @@ export class ClaimService {
     }
 
     async readAllReward(afterId?: string):Promise<{data: any[]; nextCursor: Types.ObjectId | null}> {
-        console.log("afterId:", afterId);
         const query = this.eventHelperService.buildAllQuery(afterId);
-        console.log("Query : ", query);
         const rewards = await this.fetchRewards(query);
-        console.log("rewards : ",rewards);
         const nextCursor = this.eventHelperService.getNextCursor(rewards);
-        console.log("next cursor : ", nextCursor);
         return { data: rewards, nextCursor };
     }
 
