@@ -70,10 +70,10 @@ export class AuthService {
         const user = await this.getUserorThrow(userId);
         const now = this.timeService.now();
         const isFirstLogin = this.isFirstLogin(user);
-        await this.updateUserLoginDates(user.userId, now, isFirstLogin);
+        const updatedUser = await this.updateUserLoginDates(user.userId, now, isFirstLogin);
         return {
-            firstLoginAt: user.firstLoginAt,
-            lastLoginAt: user.lastLoginAt
+            firstLoginAt: updatedUser.firstLoginAt,
+            lastLoginAt: updatedUser.lastLoginAt
         }
     }
 
