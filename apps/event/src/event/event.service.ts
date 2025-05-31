@@ -98,9 +98,6 @@ export class EventService {
 
   async getValideEventOrThrow(eventId: Types.ObjectId) {
     const event = await this.findEventByIdOrThrow(eventId);
-    if(!event) {
-      throw new NotFoundException(ERROR_MESSAGES.NOT_FOUND_EVENT);
-    }
     return event;
   }
 }

@@ -12,8 +12,11 @@ export class EventService implements OnModuleInit{
 
     onModuleInit() {
         this.client = ClientProxyFactory.create({
-            transport: Transport.TCP,
-            options: { host: 'event', port: 3000 },
+            transport: Transport.REDIS,
+            options: { 
+                host: 'redis', 
+                port: 6379 
+            },
         })
     }
 
