@@ -67,7 +67,7 @@ docker compose up --build
 sign-up
 {
     "userId": "testid",
-    "name": "메이플스토리",
+    "name": "jaemoon",
     "password": "password",
     "role": "admin"
 }
