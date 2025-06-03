@@ -13,6 +13,9 @@ import { StrategyFactory } from './strategy/strategy-factory';
 import { SignupDaysStrategy } from './strategy/signup-days.strategy';
 import { AuthModule } from 'apps/user/src/auth/auth.module';
 import { TimeService } from './service/time.service';
+import { REWARD_QUEUE_NAME, RewardQueueService } from '../queue/reward.queue';
+import { RewardProcess } from '../queue/reward.process';
+import { BullModule } from '@nestjs/bull';
 
 @Module({
   imports: [
@@ -30,7 +33,10 @@ import { TimeService } from './service/time.service';
           name: Claim.name,
           schema: ClaimSchema
         }
-    ])
+    ]),
+    BullModule.registerQueue({
+      name: REWARD_QUEUE_NAME,
+    })
   ],
   controllers: [EventController],
   providers: [
@@ -41,7 +47,9 @@ import { TimeService } from './service/time.service';
     RewardService,
     StrategyFactory,
     SignupDaysStrategy,
-    TimeService
+    TimeService,
+    RewardProcess,
+    RewardQueueService,
   ],
 })
 export class EventModule {}
