@@ -56,7 +56,7 @@ export class EventService {
     }
     return updated;
   }
-  
+
   async rewardEvent(user: UserType, eventId: string) {
     const objectId = this.eventHelperService.toObjectId(eventId);
     const event = await this.getValideEventOrThrow(objectId);
@@ -67,7 +67,6 @@ export class EventService {
 
     const isEligible = await this.eventValidationService.checkEligibility(user, event.conditions || {});
     const claims = await this.claimService.createClaims(user.userId, event._id, rewards, isEligible);
-    
     return {
       message: isEligible
         ? EVENT_CONDITION.SIGNUP_EVENT.SATISFACTION
