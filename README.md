@@ -153,6 +153,11 @@ reward-event/
 
 ![image](https://github.com/user-attachments/assets/2bca432b-6017-4106-8e8d-8086200e42ba)
 
+#### event queue (bullmq)
+
+![image](https://github.com/user-attachments/assets/6983f43d-27df-4a40-908b-5366c9019e89)
+
+
 ## 조건이라는 것에 대해서
 
 apps/event/src/event/strategy
